@@ -69,7 +69,7 @@ chop $preamble;
 $stap_src = <<_EOC_;
 $preamble
 
-probe process("$nginx_path").function("ngx_http_file_cache_forced_expire")
+probe process("$nginx_path").statement("*\@ngx_http_file_cache.c:1427")
 {
     if (pid() == target()) {
 
